@@ -32,11 +32,11 @@ extern const pointing_device_driver_t pointing_device_driver;
 #ifndef COCOT_CPI_OPTIONS
 #    define COCOT_CPI_OPTIONS { 200, 400, 800, 1600, 3200 }
 #    ifndef COCOT_CPI_DEFAULT
-#       define COCOT_CPI_DEFAULT 3
+#       define COCOT_CPI_DEFAULT 2
 #    endif
 #endif
 #ifndef COCOT_CPI_DEFAULT
-#    define COCOT_CPI_DEFAULT 3
+#    define COCOT_CPI_DEFAULT 2
 #endif
 
 #ifndef COCOT_SCROLL_DIVIDERS
@@ -53,14 +53,14 @@ extern const pointing_device_driver_t pointing_device_driver;
 #ifndef COCOT_ROTATION_ANGLE
 #    define COCOT_ROTATION_ANGLE { -90, -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75, 90 }
 #    ifndef COCOT_ROTATION_DEFAULT
-#       define COCOT_ROTATION_DEFAULT 3
+#       define COCOT_ROTATION_DEFAULT 5
 #    endif
 #endif
 #ifndef COCOT_ROTATION_DEFAULT
-#    define COCOT_ROTATION_DEFAULT 3
+#    define COCOT_ROTATION_DEFAULT 5
 #endif
 #ifndef COCOT_AUTO_MOUSE_MODE
-#    define COCOT_AUTO_MOUSE_MODE true
+#    define COCOT_AUTO_MOUSE_MODE false
 #endif
 
 
@@ -80,7 +80,7 @@ void pointing_device_init_kb(void) {
     // set the CPI.
     pointing_device_set_cpi(cpi_array[cocot_config.cpi_idx]);
     cocot_config.raw = eeconfig_read_kb();
-    eeconfig_update_kb(cocot_config.raw);
+    //eeconfig_update_kb(cocot_config.raw);
     //set_auto_mouse_layer(4);
     set_auto_mouse_enable(cocot_config.auto_mouse);
 }
@@ -203,7 +203,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
                 set_auto_mouse_enable(cocot_config.auto_mouse);
                 //auto_mouse_tg_off = !get_auto_mouse_enable();
             } // do nothing on key up
-            return false; // prevent further processing of keycode            
+            return false; // prevent further processing of keycode  
     //*/
     }
     
@@ -454,6 +454,5 @@ bool oled_task_user(void) {
     oled_write_layer_state();
     return false;
 }
-
 
 #endif

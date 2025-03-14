@@ -1,0 +1,5 @@
+VIA_ENABLE = yes
+VIAL_ENABLE = yes
+ENCODER_MAP_ENABLE = yes
+
+USER_NAME := buri_chu_36
